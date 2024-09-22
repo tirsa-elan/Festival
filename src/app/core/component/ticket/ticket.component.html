@@ -1,0 +1,101 @@
+<div class="ticket">
+    <div>
+        <h2>Tickets On Sale Now!</h2>
+        <span>Check out upcoming and past shows & events and grab your ticket right now.</span>
+    </div>
+</div>
+<!--  -->
+
+
+<!-- table -->
+<div class="container mt-5">
+    <button class="btn btn-primary mb-3" (click)="add()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+            class="bi bi-file-plus-fill"></i></button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">month</th>
+                <th scope="col">price</th>
+                <th scope="col">location</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of formData let del=index">
+                <th>{{data.id}}</th>
+                <th>{{data.month}}</th>
+                <td>{{data.price}}</td>
+                <td>{{data.location}}</td>
+                <td class="d-flex" style="flex-wrap: nowrap;">
+                    <button type="button" class="btn btn-danger mx-3" (click)="delete(data.id,del)"> <i
+                            class="bi bi-trash3-fill"></i></button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="update(data)"> <i class="bi bi-pencil"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalStatus === "I" ? 'افزودن' : 'ویرایش' }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="modalInitStatus">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="search-box">
+                                <form [formGroup]="form" (ngSubmit)="addorUpdate()" id="subscribe">
+                                    <div class="row g-3">
+                                        <div *ngIf="modalStatus =='U'" class="col-12">
+                                            <input type="text" class="form-control disabled" id="inputPassword2"
+                                                formControlName="id">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="">Month</label>
+                                            <select formControlName="month">
+                                                <option value="June" id="June">June</option>
+                                                <option value="July" id="July">July</option>
+                                                <option value="August" id="August">August</option>
+                                                <option value="September" id="September">September</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="">Location</label>
+                                            <select formControlName="location">
+                                                <option value="Brazil" name="Brazil" id="Brazil">Brazil</option>
+                                                <option value="Europe" name="Europe" id="Europe">Europe</option>
+                                                <option value="US" name="US" id="US">US</option>
+                                                <option value="Asia" name="Asia" id="Asia">Asia</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="">Price</label>
+                                            <select formControlName="price">
+                                                <option value="$0 - $50" id="min">$0 - $50</option>
+                                                <option value="$50 - $100" id="standard">$50 - $100</option>
+                                                <option value="$100 - $200" id="hight">$100 - $200</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

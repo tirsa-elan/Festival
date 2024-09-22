@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.owl-crasoul.purchase-crasoul .owl-theme {
+    position: relative;
+
+    .owl-nav {
+
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            right: -45px;
+            // top: 25px;
+        }
+
+        .owl-prev {
+            position: absolute;
+            top: 50%;
+            left: -45px;
+            // top: 25px;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    .owl-crasoul.purchase-crasoul .owl-theme {
+        position: relative;
+
+        .owl-nav {
+            display: none;
+        }
+    }
+}

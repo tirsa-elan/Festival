@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "a633",
+      "price": "$100 - $200",
+      "location": "US",
+      "month": "September"
+    },
+    {
+      "id": "1aab",
+      "price": "$0 - $50",
+      "location": "US",
+      "month": "July"
+    }
+  ]
+}
